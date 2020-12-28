@@ -4,6 +4,31 @@ const app = express();
 const register = require("./routes/register");
 const mongoose = require("mongoose");
 const port = process.env.PORT || 3001;
+const expressSwagger = require("express-swagger-generator")(app);
+let options = {
+  swaggerDefinition: {
+    info: {
+      description: "This is a sample server",
+      title: "Swagger",
+      version: "1.0.0",
+    },
+    host: "localhost:3000",
+    basePath: "/v1",
+    produces: ["application/json", "application/xml"],
+    schemes: ["http", "https"],
+    securityDefinitions: {
+      JWT: {
+        type: "apiKey",
+        in: "header",
+        name: "Authorization",
+        description: "",
+      },
+    },
+  },
+  basedir: __dirname, //app absolute path
+  files: ["./routes/register.js"], //Path to the API handle folder
+};
+expressSwagger(options);
 
 mongoose.connect(
   "mongodb+srv://poseidon-dev-admin:Vermiw-jyhqut-0zugja@poseidon-dev.5v6k7.mongodb.net/poseidon-dev?retryWrites=true&w=majority",

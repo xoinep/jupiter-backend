@@ -90,6 +90,58 @@
           }
         }
       }
+    },
+    "/user/get": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "Get user information",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Create a new area",
+            "required": true,
+            "type": "object",
+            "schema": {
+              "$ref": "#/definitions/getUserModel"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/register/signup": {
+      "post": {
+        "tags": [
+          "Register"
+        ],
+        "description": "Endpoint to sign up user",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Create a new user",
+            "required": true,
+            "type": "object",
+            "schema": {
+              "$ref": "#/definitions/SignUpRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User successfully obtained.",
+            "schema": {
+              "$ref": "#/definitions/SignUpRequest"
+            }
+          },
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -118,17 +170,25 @@
       "properties": {
         "username": {
           "type": "string",
-          "example": "username"
+          "example": "Nguyen Bang Hoang"
         },
         "password": {
           "type": "string",
-          "example": "password"
+          "example": "String"
+        },
+        "email": {
+          "type": "string",
+          "example": "hoangmrb@gmail.com"
+        },
+        "phone": {
+          "type": "string",
+          "example": "0986323066"
+        },
+        "location": {
+          "type": "string",
+          "example": "Ha Noi"
         }
       },
-      "required": [
-        "username",
-        "password"
-      ],
       "xml": {
         "name": "SignUpRequest"
       }
@@ -140,10 +200,10 @@
           "type": "string",
           "example": "Ten Khu Vuc"
         },
-        "ownerId": {
+        "ownerIds": {
           "type": "array",
           "items": {
-            "type": "number"
+            "type": "string"
           }
         },
         "location": {
@@ -151,10 +211,6 @@
           "example": "Ha Noi"
         }
       },
-      "required": [
-        "name",
-        "location"
-      ],
       "xml": {
         "name": "createAreaModel"
       }
@@ -166,27 +222,29 @@
           "type": "string",
           "example": "String"
         },
-        "ownerId": {
-          "type": "number",
-          "example": 0
-        },
         "areaId": {
-          "type": "number",
-          "example": 0
+          "type": "string",
+          "example": "mongoose.SchemaTypes.ObjectId - 5ff6c9d75d8593237c1c5b5d"
         },
         "target": {
           "type": "string",
           "example": "String"
         }
       },
-      "required": [
-        "name",
-        "ownerId",
-        "areaId",
-        "target"
-      ],
       "xml": {
         "name": "createPoolModel"
+      }
+    },
+    "getUserModel": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "example": "mongoose.SchemaTypes.ObjectId - 5ff6c9d75d8593237c1c5b5d"
+        }
+      },
+      "xml": {
+        "name": "getUserModel"
       }
     }
   }

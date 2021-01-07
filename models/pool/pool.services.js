@@ -7,4 +7,7 @@ PoolServices.createPool = async (createPoolModel) => {
   return pool;
 };
 
+PoolServices.getPoolsByAreaIds = async (areaIds) => {
+  return await Pool.find({ areaId: { $in: areaIds } });
+};
 module.exports = PoolServices;

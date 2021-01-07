@@ -51,6 +51,12 @@ const doc = {
       ownerId: [0986323066],
       $location: "Ha Noi",
     },
+    createPoolModel: {
+      $name: "String",
+      $ownerId: 0,
+      $areaId: 0,
+      $target: "String",
+    },
   },
 };
 

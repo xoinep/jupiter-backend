@@ -63,42 +63,21 @@
         }
       }
     },
-    "/generate-token": {
+    "/pool/create": {
       "post": {
         "tags": [
-          "Register"
+          "Pool"
         ],
-        "description": "Endpoint to Register Service",
+        "description": "Create a new Pool",
         "parameters": [
           {
             "name": "obj",
             "in": "body",
-            "description": "Generate an encrypted token based on facebook page id and long lived access token",
+            "description": "Create a new pool",
             "required": true,
             "type": "object",
             "schema": {
-              "$ref": "#/definitions/GenerateTokenRequest"
-            }
-          }
-        ],
-        "responses": {}
-      }
-    },
-    "/signup": {
-      "post": {
-        "tags": [
-          "Register"
-        ],
-        "description": "Endpoint to sign up user",
-        "parameters": [
-          {
-            "name": "obj",
-            "in": "body",
-            "description": "Create a new user",
-            "required": true,
-            "type": "object",
-            "schema": {
-              "$ref": "#/definitions/SignUpRequest"
+              "$ref": "#/definitions/createPoolModel"
             }
           }
         ],
@@ -106,11 +85,8 @@
           "200": {
             "description": "User successfully obtained.",
             "schema": {
-              "$ref": "#/definitions/SignUpRequest"
+              "$ref": "#/definitions/createPoolModel"
             }
-          },
-          "201": {
-            "description": "Created"
           }
         }
       }
@@ -181,6 +157,36 @@
       ],
       "xml": {
         "name": "createAreaModel"
+      }
+    },
+    "createPoolModel": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "String"
+        },
+        "ownerId": {
+          "type": "number",
+          "example": 0
+        },
+        "areaId": {
+          "type": "number",
+          "example": 0
+        },
+        "target": {
+          "type": "string",
+          "example": "String"
+        }
+      },
+      "required": [
+        "name",
+        "ownerId",
+        "areaId",
+        "target"
+      ],
+      "xml": {
+        "name": "createPoolModel"
       }
     }
   }

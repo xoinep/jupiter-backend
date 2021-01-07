@@ -3,22 +3,22 @@ var router = express.Router();
 var encryptor = require("../services/encrypt");
 var userServices = require("../models/user/user.services");
 
-router.post("/generate-token", async (req, res) => {
-  /* 	#swagger.tags = ['Register']
-      #swagger.description = 'Endpoint to Register Service' */
+// router.post("/generate-token", async (req, res) => {
+//   /* 	#swagger.tags = ['Register']
+//       #swagger.description = 'Endpoint to Register Service' */
 
-  /*	#swagger.parameters['obj'] = {
-          in: 'body',
-          description: 'Generate an encrypted token based on facebook page id and long lived access token',
-          required: true,
-          type: 'object',
-          schema: { $ref: "#/definitions/GenerateTokenRequest" }
-  } */
-  let token = `${req.body.token}:${req.body.pageId}`;
-  const encryptedString = encryptor.encrypt(token);
-  res.send(encryptedString);
-  return;
-});
+//   /*	#swagger.parameters['obj'] = {
+//           in: 'body',
+//           description: 'Generate an encrypted token based on facebook page id and long lived access token',
+//           required: true,
+//           type: 'object',
+//           schema: { $ref: "#/definitions/GenerateTokenRequest" }
+//   } */
+//   let token = `${req.body.token}:${req.body.pageId}`;
+//   const encryptedString = encryptor.encrypt(token);
+//   res.send(encryptedString);
+//   return;
+// });
 
 router.post("/signup", async (req, res) => {
   /* 	#swagger.tags = ['Register']
@@ -44,7 +44,7 @@ router.post("/signup", async (req, res) => {
         description: 'User successfully obtained.',
         schema: { $ref: "#/definitions/SignUpRequest" } 
   } */
-  res.status(200).send(user);
+  res.send(user);
 });
 
 module.exports = router;

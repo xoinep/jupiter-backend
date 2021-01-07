@@ -46,6 +46,11 @@ const doc = {
       $username: "username",
       $password: "password",
     },
+    createAreaModel: {
+      $name: "Ten Khu Vuc",
+      ownerId: [0986323066],
+      $location: "Ha Noi",
+    },
   },
 };
 

@@ -1,7 +1,5 @@
 const express = require("express");
-const parser = require("body-parser");
 const app = express();
-const register = require("./routes/register");
 const mongoose = require("mongoose");
 const port = process.env.PORT || 3001;
 const swaggerUi = require("swagger-ui-express");
@@ -10,9 +8,9 @@ const swagggerFile = require("./swagger_output.json");
 /* Routes */
 const router = require("./routes.js");
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(router);
-app.use(parser.urlencoded({ extended: false }));
-app.use(parser.json());
 app.use("/doc", swaggerUi.serve, swaggerUi.setup(swagggerFile));
 
 app.listen(port, () => {

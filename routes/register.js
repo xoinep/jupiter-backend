@@ -31,7 +31,9 @@ router.post("/signup", async (req, res) => {
           type: 'object',
           schema: { $ref: "#/definitions/SignUpRequest" }
   } */
-  const { username, password } = req;
+
+  console.log(req.body);
+  const { username, password } = req.body;
   const user = await userServices.createUser(username, password);
   console.log(user);
   if (!user) {

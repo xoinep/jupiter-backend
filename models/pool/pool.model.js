@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 
 var poolSchema = new mongoose.Schema({
   name: String,
-  ownerId: Number,
-  areaId: Number,
+  ownerId: mongoose.SchemaTypes.ObjectId,
+  areaId: mongoose.SchemaTypes.ObjectId,
   target: String,
 });
 

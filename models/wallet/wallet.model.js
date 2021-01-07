@@ -2,9 +2,10 @@ const mongoose = require("mongoose");
 
 var walletSchema = new mongoose.Schema({
   name: String,
-  ownerId: Number,
+  ownerId: mongoose.SchemaTypes.ObjectId,
   unit: String,
-  poolId: Number,
+  poolId: mongoose.SchemaTypes.ObjectId,
+  areaId: mongoose.SchemaTypes.ObjectId,
 });
 
 module.exports = mongoose.model("Wallet", walletSchema);

@@ -40,7 +40,7 @@
         "tags": [
           "Area"
         ],
-        "description": "Create a new Area",
+        "description": "Create a new Area as well as default wallets",
         "parameters": [
           {
             "name": "obj",
@@ -53,14 +53,7 @@
             }
           }
         ],
-        "responses": {
-          "200": {
-            "description": "User successfully obtained.",
-            "schema": {
-              "$ref": "#/definitions/createAreaModel"
-            }
-          }
-        }
+        "responses": {}
       }
     },
     "/pool/create": {

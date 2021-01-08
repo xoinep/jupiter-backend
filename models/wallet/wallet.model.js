@@ -6,6 +6,7 @@ var walletSchema = new mongoose.Schema({
   unit: String,
   areaId: mongoose.SchemaTypes.ObjectId,
   balance: Number,
+  poolId: mongoose.SchemaTypes.ObjectId,
 });
 
 module.exports = mongoose.model("Wallet", walletSchema);

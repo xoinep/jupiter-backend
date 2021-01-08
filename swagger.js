@@ -59,6 +59,7 @@ const doc = {
       // ownerId: "mongoose.SchemaTypes.ObjectId - 5ff6c9d75d8593237c1c5b5d",
       areaId: "mongoose.SchemaTypes.ObjectId - 5ff6c9d75d8593237c1c5b5d",
       target: "String",
+      unit: "String",
     },
     getUserModel: {
       userId: "mongoose.SchemaTypes.ObjectId - 5ff6c9d75d8593237c1c5b5d",

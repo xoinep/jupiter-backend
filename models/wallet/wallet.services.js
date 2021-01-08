@@ -2,8 +2,8 @@ const Wallet = require("./wallet.model");
 
 const WalletServices = {};
 
-WalletServices.createWallet = async (name, ownerId, unit, areaId) => {
-  wallet = await Wallet.create({ name, ownerId, unit, areaId });
+WalletServices.createWallet = async (wallet) => {
+  wallet = await Wallet.create(wallet);
   return wallet;
 };
 

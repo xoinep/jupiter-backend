@@ -64,6 +64,16 @@ const doc = {
     getUserModel: {
       userId: "mongoose.SchemaTypes.ObjectId - 5ff6c9d75d8593237c1c5b5d",
     },
+    createTransactionModel: {
+      walletId: "mongoose.SchemaTypes.ObjectId",
+      creatorId: "mongoose.SchemaTypes.ObjectId",
+      createdDate: 1610167187000,
+      quantity: 0,
+      title: "Transaction's title",
+      customData: {
+        note: "Do smt",
+      },
+    },
   },
 };
 

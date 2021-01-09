@@ -2,8 +2,8 @@ const Transaction = require("./transaction.model");
 
 const TransactionServices = {};
 
-TransactionServices.createTransaction = async (data) => {
-  transaction = await Transaction.create({ data });
+TransactionServices.createTransaction = async (createTransactionModel) => {
+  transaction = await Transaction.create(createTransactionModel);
   return transaction;
 };
 

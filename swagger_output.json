@@ -135,6 +135,34 @@
           }
         }
       }
+    },
+    "/transaction/create": {
+      "post": {
+        "tags": [
+          "Transaction"
+        ],
+        "description": "Create a new transaction",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Create a new transaction",
+            "required": true,
+            "type": "object",
+            "schema": {
+              "$ref": "#/definitions/createTransactionModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User successfully obtained.",
+            "schema": {
+              "$ref": "#/definitions/createTransactionModel"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -242,6 +270,43 @@
       },
       "xml": {
         "name": "getUserModel"
+      }
+    },
+    "createTransactionModel": {
+      "type": "object",
+      "properties": {
+        "walletId": {
+          "type": "string",
+          "example": "mongoose.SchemaTypes.ObjectId"
+        },
+        "creatorId": {
+          "type": "string",
+          "example": "mongoose.SchemaTypes.ObjectId"
+        },
+        "createdDate": {
+          "type": "number",
+          "example": 1610167187000
+        },
+        "quantity": {
+          "type": "number",
+          "example": 0
+        },
+        "title": {
+          "type": "string",
+          "example": "Transaction's title"
+        },
+        "customData": {
+          "type": "object",
+          "properties": {
+            "note": {
+              "type": "string",
+              "example": "Do smt"
+            }
+          }
+        }
+      },
+      "xml": {
+        "name": "createTransactionModel"
       }
     }
   }

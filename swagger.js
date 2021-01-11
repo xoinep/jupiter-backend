@@ -74,6 +74,16 @@ const doc = {
         note: "Do smt",
       },
     },
+    getTransactionsInRangesByCreatorId: {
+      creatorId: "mongoose.SchemaTypes.ObjectId",
+      startDate: 1610167187000,
+      endDate: 1610348546000
+    },
+    getTransactionsInRangesByWalletIdModel: {
+      walletId: "mongoose.SchemaTypes.ObjectId",
+      startDate: 1610167187000,
+      endDate: 1610348546000
+    }
   },
 };
 

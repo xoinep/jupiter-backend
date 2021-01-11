@@ -15,13 +15,26 @@ router.post("/create", async (req, res) => {
     } */
 
   let transaction = await transactionService.createTransaction(req.body);
-  console.log(transaction);
   /* #swagger.responses[200] = { 
-        description: 'User successfully obtained.',
+        description: 'Transaction successfully created.',
         schema: { $ref: "#/definitions/createTransactionModel" } 
   } */
   res.send(transaction);
-  return;
 });
+
+router.post("/get-transactions-in-ranges-by-creator-id", async(req, res) => {
+  /* 	#swagger.tags = ['Transaction']
+        #swagger.description = 'Get transactions by creator-id in ranges' */
+
+  /*	#swagger.parameters['obj'] = {
+            in: 'body',
+            description: 'Get transactions by creator-id',
+            required: true,
+            type: 'object',
+            schema: { $ref: "#/definitions/getTransactionsInRangesByCreatorId" }
+    } */
+  let transactions = await transactionService.findTransactionsInRangeByCreatorId(req.body);
+  res.send(transactions);
+})
 
 module.exports = router;

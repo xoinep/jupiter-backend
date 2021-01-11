@@ -156,12 +156,33 @@
         ],
         "responses": {
           "200": {
-            "description": "User successfully obtained.",
+            "description": "Transaction successfully created.",
             "schema": {
               "$ref": "#/definitions/createTransactionModel"
             }
           }
         }
+      }
+    },
+    "/transaction/get-transactions-in-ranges-by-creator-id": {
+      "post": {
+        "tags": [
+          "Transaction"
+        ],
+        "description": "Get transactions by creator-id in ranges",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Get transactions by creator-id",
+            "required": true,
+            "type": "object",
+            "schema": {
+              "$ref": "#/definitions/getTransactionsInRangesByCreatorId"
+            }
+          }
+        ],
+        "responses": {}
       }
     }
   },
@@ -307,6 +328,46 @@
       },
       "xml": {
         "name": "createTransactionModel"
+      }
+    },
+    "getTransactionsInRangesByCreatorId": {
+      "type": "object",
+      "properties": {
+        "creatorId": {
+          "type": "string",
+          "example": "mongoose.SchemaTypes.ObjectId"
+        },
+        "startDate": {
+          "type": "number",
+          "example": 1610167187000
+        },
+        "endDate": {
+          "type": "number",
+          "example": 1610348546000
+        }
+      },
+      "xml": {
+        "name": "getTransactionsInRangesByCreatorId"
+      }
+    },
+    "getTransactionsInRangesByWalletIdModel": {
+      "type": "object",
+      "properties": {
+        "walletId": {
+          "type": "string",
+          "example": "mongoose.SchemaTypes.ObjectId"
+        },
+        "startDate": {
+          "type": "number",
+          "example": 1610167187000
+        },
+        "endDate": {
+          "type": "number",
+          "example": 1610348546000
+        }
+      },
+      "xml": {
+        "name": "getTransactionsInRangesByWalletIdModel"
       }
     }
   }

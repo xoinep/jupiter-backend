@@ -184,6 +184,34 @@
         ],
         "responses": {}
       }
+    },
+    "/note/create": {
+      "post": {
+        "tags": [
+          "Note"
+        ],
+        "description": "Create a new note",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Create a new note",
+            "required": true,
+            "type": "object",
+            "schema": {
+              "$ref": "#/definitions/createNoteModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Note successfully created.",
+            "schema": {
+              "$ref": "#/definitions/createNoteModel"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -368,6 +396,48 @@
       },
       "xml": {
         "name": "getTransactionsInRangesByWalletIdModel"
+      }
+    },
+    "createNoteModel": {
+      "type": "object",
+      "properties": {
+        "noteType": {
+          "type": "string",
+          "example": "NoteType"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "date": {
+                "type": "number",
+                "example": 1610167187000
+              },
+              "content": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "creatorId": {
+                "type": "string",
+                "example": "mongoose.SchemaType.ObjectId"
+              }
+            }
+          }
+        },
+        "areaId": {
+          "type": "string",
+          "example": "mongoose.SchemaType.ObjectId"
+        },
+        "poolId": {
+          "type": "string",
+          "example": "mongoose.SchemaType.ObjectId"
+        }
+      },
+      "xml": {
+        "name": "createNoteModel"
       }
     }
   }

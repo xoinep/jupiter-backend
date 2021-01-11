@@ -83,6 +83,18 @@ const doc = {
       walletId: "mongoose.SchemaTypes.ObjectId",
       startDate: 1610167187000,
       endDate: 1610348546000
+    },
+    createNoteModel: {
+      noteType: "NoteType",
+      notes: [
+        {
+          date: 1610167187000,
+          content: ["Note 1"],
+          creatorId: 'mongoose.SchemaType.ObjectId'
+        }
+      ],
+      areaId: 'mongoose.SchemaType.ObjectId',
+      poolId: 'mongoose.SchemaType.ObjectId',
     }
   },
 };

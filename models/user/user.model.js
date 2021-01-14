@@ -8,7 +8,8 @@ const userSchema = new mongoose.Schema({
   location: {
     city: String,
     district: String,
-    province: String
+    province: String,
+    block: String
   },
   verifyEmail: Boolean,
   avatar: String,

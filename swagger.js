@@ -104,7 +104,8 @@ const doc = {
       location: {
         city: "Ha Noi",
         district: "Dong Da",
-        province: "Ha Noi"
+        province: "Ha Noi",
+        block: "Phuong Lien"
       },
       verifyEmail: false,
       avatar: "string",

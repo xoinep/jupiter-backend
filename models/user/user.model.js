@@ -1,11 +1,22 @@
 const mongoose = require("mongoose");
 
-var userSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
   username: String,
   password: String,
   email: String,
   phone: String,
-  location: String,
+  location: {
+    city: String,
+    district: String,
+    province: String
+  },
+  verifyEmail: Boolean,
+  avatar: String,
+  detailInformation: {
+    isRoot: Boolean,
+    subAccounts: Array
+  },
+  createdAt: Date
 });
 
 module.exports = mongoose.model("User", userSchema);

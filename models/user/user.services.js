@@ -15,6 +15,16 @@ UserServices.createUser = async (username, password) => {
   return await jwt.sign({ userId: user._id });
 };
 
+UserServices.createSubUser = async (createSubUserRequest) => {
+  const {username, password} = createSubUserRequest;
+  let user = await User.findOne({ username });
+  if (user) {
+    throw error(400, 'Username already exists');
+  }
+  createSubUserRequest.password = await hasher.hash(password);
+  user = await User.create(createSubUserRequest);
+  return await jwt.sign({ userId: user._id });
+}
 UserServices.login = async (userId, password) => {
   let user = await User.findById(userId);
   if (!user) {

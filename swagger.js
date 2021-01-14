@@ -95,6 +95,23 @@ const doc = {
       ],
       areaId: 'mongoose.SchemaType.ObjectId',
       poolId: 'mongoose.SchemaType.ObjectId',
+    },
+    createSubUserRequest: {
+      username: "Hoang",
+      password: "Bang",
+      email: "String",
+      phone: "String",
+      location: {
+        city: "Ha Noi",
+        district: "Dong Da",
+        province: "Ha Noi"
+      },
+      verifyEmail: false,
+      avatar: "string",
+      detailInformation: {
+        isRoot: false,
+        subAccounts: ["1"]
+      }
     }
   },
 };

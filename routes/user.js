@@ -37,7 +37,27 @@ router.post("/get", async (req, res) => {
   //   let wallets = await walletServices.getWalletByPoolIds(poolIds);
   //   console.log(wallets);
   res.sendStatus(200);
-  return;
 });
+
+router.post("/create-sub-user", async(req, res) => {
+  /* 	#swagger.tags = ['User']
+        #swagger.description = 'create sub user ' */
+
+  /*	#swagger.parameters['obj'] = {
+            in: 'body',
+            description: 'Create a new sub user',
+            required: true,
+            type: 'object',
+            schema: { $ref: "#/definitions/createSubUserRequest" }
+    } */
+  try {
+    let token = await userServices.createSubUser(req.body)
+    res.send(token);
+  }catch (e) {
+    res.status(e.status).send(e.message);
+  }
+
+
+})
 
 module.exports = router;

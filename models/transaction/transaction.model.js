@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-var transactionSchema = new mongoose.Schema({
+const transactionSchema = new mongoose.Schema({
   walletId: mongoose.SchemaTypes.ObjectId,
   creatorId: mongoose.SchemaTypes.ObjectId,
   createdDate: Date,

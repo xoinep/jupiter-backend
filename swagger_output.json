@@ -105,6 +105,27 @@
         "responses": {}
       }
     },
+    "/user/create-sub-user": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "create sub user ",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Create a new sub user",
+            "required": true,
+            "type": "object",
+            "schema": {
+              "$ref": "#/definitions/createSubUserRequest"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
     "/auth/signup": {
       "post": {
         "tags": [
@@ -441,6 +462,70 @@
       },
       "xml": {
         "name": "createNoteModel"
+      }
+    },
+    "createSubUserRequest": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string",
+          "example": "Hoang"
+        },
+        "password": {
+          "type": "string",
+          "example": "Bang"
+        },
+        "email": {
+          "type": "string",
+          "example": "String"
+        },
+        "phone": {
+          "type": "string",
+          "example": "String"
+        },
+        "location": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string",
+              "example": "Ha Noi"
+            },
+            "district": {
+              "type": "string",
+              "example": "Dong Da"
+            },
+            "province": {
+              "type": "string",
+              "example": "Ha Noi"
+            }
+          }
+        },
+        "verifyEmail": {
+          "type": "boolean",
+          "example": false
+        },
+        "avatar": {
+          "type": "string",
+          "example": "string"
+        },
+        "detailInformation": {
+          "type": "object",
+          "properties": {
+            "isRoot": {
+              "type": "boolean",
+              "example": false
+            },
+            "subAccounts": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "xml": {
+        "name": "createSubUserRequest"
       }
     }
   }

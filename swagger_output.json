@@ -105,7 +105,7 @@
         "responses": {}
       }
     },
-    "/register/signup": {
+    "/auth/signup": {
       "post": {
         "tags": [
           "Register"
@@ -129,11 +129,24 @@
             "schema": {
               "$ref": "#/definitions/SignUpRequest"
             }
-          },
-          "201": {
-            "description": "Created"
           }
         }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/auth/test": {
+      "get": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
       }
     },
     "/transaction/create": {

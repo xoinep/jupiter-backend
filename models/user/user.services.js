@@ -1,31 +1,28 @@
-const User = require("./user.model");
+const User = require('./user.model');
+const error = require('../../utils/error');
+const hasher = require('../../utils/encrypt');
+const jwt = require('../../utils/jwt');
 
 const UserServices = {};
 
 UserServices.createUser = async (username, password) => {
   let user = await User.findOne({ username });
   if (user) {
-    return false;
+    throw error(400, 'Username already exists');
   }
-  user = await User.create({ username, password });
-  return user;
+  let hashedPass = await hasher.hash(password);
+  user = await User.create({ username, password: hashedPass });
+  return await jwt.sign({ userId: user._id });
 };
 
-UserServices.checkCredentials = async (username, password) => {
-  let user = await User.findOne({ username, password });
+UserServices.login = async (userId, password) => {
+  let user = await User.findById(userId);
   if (!user) {
-    throw new Error("Invalid username/password");
+    throw error(404, 'User not found!');
   }
-  return user;
-};
-
-UserServices.checkPassword = async (id, password) => {
-  const user = await User.findById(id);
-  if (!user) {
-    throw new Error("User does not exist!");
-  }
-  if (md5(user.password) !== password) {
-    throw new Error("Password is not valid!");
+  let isMatched = await hasher.compare(password, user.password);
+  if (!isMatched) {
+    throw error(400, 'Incorrect password');
   }
   return user;
 };

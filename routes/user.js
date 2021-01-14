@@ -1,9 +1,9 @@
-var express = require("express");
-var router = express.Router();
-var userServices = require("../models/user/user.services");
-var areaServices = require("../models/area/area.services");
-var poolServices = require("../models/pool/pool.services");
-var walletServices = require("../models/wallet/wallet.services");
+const express = require("express");
+const router = express.Router();
+const userServices = require("../models/user/user.services");
+const areaServices = require("../models/area/area.services");
+const poolServices = require("../models/pool/pool.services");
+const walletServices = require("../models/wallet/wallet.services");
 
 router.post("/get", async (req, res) => {
   /* 	#swagger.tags = ['User']

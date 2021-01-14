@@ -1,7 +1,7 @@
-var express = require('express');
-var router = express.Router();
-var encryptor = require('../utils/encrypt');
-var userServices = require('../models/user/user.services');
+const express = require('express');
+const router = express.Router();
+const encryptor = require('../utils/encrypt');
+const userServices = require('../models/user/user.services');
 
 router.post('/signup', async (req, res) => {
   /* 	#swagger.tags = ['Register']

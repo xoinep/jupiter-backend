@@ -141,14 +141,6 @@
         "responses": {}
       }
     },
-    "/auth/test": {
-      "get": {
-        "tags": [],
-        "description": "",
-        "parameters": [],
-        "responses": {}
-      }
-    },
     "/transaction/create": {
       "post": {
         "tags": [
@@ -283,11 +275,9 @@
           "type": "string",
           "example": "Ten Khu Vuc"
         },
-        "ownerIds": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
+        "ownerId": {
+          "type": "string",
+          "example": "5ff6cd355ee1e9249035ee7d"
         },
         "location": {
           "type": "string",

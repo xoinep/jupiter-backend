@@ -1,6 +1,6 @@
-var express = require("express");
-var router = express.Router();
-var poolServices = require("../models/pool/pool.services");
+const express = require("express");
+const router = express.Router();
+const poolServices = require("../models/pool/pool.services");
 const WalletServices = require("../models/wallet/wallet.services");
 
 router.post("/create", async (req, res) => {
@@ -22,7 +22,7 @@ router.post("/create", async (req, res) => {
         schema: { $ref: "#/definitions/createPoolModel" } 
   } */
   // Create specific wallet for pool
-  wallet_in_pool = {
+  let wallet_in_pool = {
     name: pool.target,
     unit: pool.unit,
     areaId: pool.areaId,
@@ -30,9 +30,8 @@ router.post("/create", async (req, res) => {
     poolId: pool._id,
   };
 
-  wallet = await WalletServices.createWallet(wallet_in_pool);
+  let wallet = await WalletServices.createWallet(wallet_in_pool);
   res.send({ pool, wallet });
-  return;
 });
 
 module.exports = router;

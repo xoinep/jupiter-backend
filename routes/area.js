@@ -20,7 +20,7 @@ router.post("/create", async (req, res) => {
   for (const [key, value] of Object.entries(walletTypes.Fix())) {
     let wallet_model = {
       name: key,
-      ownerId: ownerId,
+      ownerId: area.ownerId,
       unit: value,
       areaId: area._id,
       balance: 0,

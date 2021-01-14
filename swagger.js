@@ -51,7 +51,7 @@ const doc = {
     },
     createAreaModel: {
       name: "Ten Khu Vuc",
-      ownerIds: ["string"],
+      ownerId: "5ff6cd355ee1e9249035ee7d",
       location: "Ha Noi",
     },
     createPoolModel: {

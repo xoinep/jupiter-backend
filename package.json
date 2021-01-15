@@ -5,8 +5,8 @@
   "license": "MIT",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "./node_modules/node-dev/bin/node-dev swagger.js",
-    "start": "node swagger.js"
+    "start": "./node_modules/node-dev/bin/node-dev swagger.js",
+    "build": "node swagger.js"
   },
   "dependencies": {
     "bcrypt": "^5.0.0",

@@ -96,7 +96,7 @@ const doc = {
       areaId: 'mongoose.SchemaType.ObjectId',
       poolId: 'mongoose.SchemaType.ObjectId',
     },
-    createSubUserRequest: {
+    createUserRequest: {
       username: "Hoang",
       password: "Bang",
       email: "String",

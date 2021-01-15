@@ -85,24 +85,17 @@
       }
     },
     "/user/get": {
-      "post": {
+      "get": {
         "tags": [
           "User"
         ],
         "description": "Get user information",
-        "parameters": [
-          {
-            "name": "obj",
-            "in": "body",
-            "description": "Create a new area",
-            "required": true,
-            "type": "object",
-            "schema": {
-              "$ref": "#/definitions/getUserModel"
-            }
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
           }
-        ],
-        "responses": {}
+        }
       }
     },
     "/user/create-sub-user": {
@@ -190,12 +183,33 @@
         }
       }
     },
-    "/transaction/get-transactions-in-ranges-by-creator-id": {
+    "/transaction/get-ranges-by-creator-id": {
       "post": {
         "tags": [
           "Transaction"
         ],
         "description": "Get transactions by creator-id in ranges",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Get transactions by creator-id",
+            "required": true,
+            "type": "object",
+            "schema": {
+              "$ref": "#/definitions/getTransactionsInRangesByCreatorId"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/transaction/get-by-id": {
+      "post": {
+        "tags": [
+          "Transaction"
+        ],
+        "description": "Get transactions by wallet-id all time",
         "parameters": [
           {
             "name": "obj",
@@ -464,7 +478,7 @@
         "name": "createNoteModel"
       }
     },
-    "createSubUserRequest": {
+    "createUserRequest": {
       "type": "object",
       "properties": {
         "username": {
@@ -497,6 +511,10 @@
             "province": {
               "type": "string",
               "example": "Ha Noi"
+            },
+            "block": {
+              "type": "string",
+              "example": "Phuong Lien"
             }
           }
         },
@@ -525,7 +543,7 @@
         }
       },
       "xml": {
-        "name": "createSubUserRequest"
+        "name": "createUserRequest"
       }
     }
   }

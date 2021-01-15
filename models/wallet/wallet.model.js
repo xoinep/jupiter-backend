@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-var walletSchema = new mongoose.Schema({
+const walletSchema = new mongoose.Schema({
   name: String,
   ownerId: mongoose.SchemaTypes.ObjectId,
   unit: String,

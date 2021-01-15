@@ -22,9 +22,24 @@ router.post("/create", async (req, res) => {
   res.send(transaction);
 });
 
-router.post("/get-transactions-in-ranges-by-creator-id", async(req, res) => {
+router.post("/get-ranges-by-creator-id", async(req, res) => {
   /* 	#swagger.tags = ['Transaction']
         #swagger.description = 'Get transactions by creator-id in ranges' */
+
+  /*	#swagger.parameters['obj'] = {
+            in: 'body',
+            description: 'Get transactions by creator-id',
+            required: true,
+            type: 'object',
+            schema: { $ref: "#/definitions/getTransactionsInRangesByCreatorId" }
+    } */
+  let transactions = await transactionService.findTransactionsInRangeByCreatorId(req.body);
+  res.send(transactions);
+})
+
+router.post("/get-by-id", async(req, res) => {
+  /* 	#swagger.tags = ['Transaction']
+        #swagger.description = 'Get transactions by wallet-id all time' */
 
   /*	#swagger.parameters['obj'] = {
             in: 'body',

@@ -5,20 +5,12 @@ const areaServices = require("../models/area/area.services");
 const poolServices = require("../models/pool/pool.services");
 const walletServices = require("../models/wallet/wallet.services");
 
-router.post("/get", async (req, res) => {
+router.get("/get", async (req, res) => {
   /* 	#swagger.tags = ['User']
         #swagger.description = 'Get user information' */
 
-  /*	#swagger.parameters['obj'] = {
-            in: 'body',
-            description: 'Create a new area',
-            required: true,
-            type: 'object',
-            schema: { $ref: "#/definitions/getUserModel" }
-    } */
-
-  const { userId } = req.body;
-
+  const { userId } = req;
+  console.log(userId)
   // Get user's Areas
   let areas = await areaServices.getAreasByOwnerId(userId);
 
@@ -30,13 +22,24 @@ router.post("/get", async (req, res) => {
   let poolIds = [];
   let pools = await poolServices.getPoolsByAreaIds(areaIds);
 
-  //   pools.forEach((e) => {
-  //     poolIds.push(e._id);
-  //   });
+  pools.forEach((e) => {
+    poolIds.push(e._id);
+  });
 
-  //   let wallets = await walletServices.getWalletByPoolIds(poolIds);
-  //   console.log(wallets);
-  res.sendStatus(200);
+  let walletByPools = await walletServices.getWalletByPoolIds(poolIds);
+  console.log(walletByPools);
+
+  let walletsByAreas = await walletServices.getWalletByAreaIds(areaIds);
+  console.log(walletsByAreas);
+
+  // Format data
+  let result = {
+    areas,
+    pools,
+    wallets: [... walletByPools, ... walletsByAreas]
+  }
+  console.log(result)
+  res.status(200).send(result);
 });
 
 router.post("/create-sub-user", async(req, res) => {

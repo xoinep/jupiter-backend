@@ -3,11 +3,10 @@ const Pool = require("./pool.model");
 const PoolServices = {};
 
 PoolServices.createPool = async (createPoolModel) => {
-  pool = await Pool.create(createPoolModel);
-  return pool;
+  return await Pool.create(createPoolModel);
 };
 
 PoolServices.getPoolsByAreaIds = async (areaIds) => {
-  return await Pool.find({ areaId: { $in: areaIds } });
+  return Pool.find({areaId: {$in: areaIds}});
 };
 module.exports = PoolServices;

@@ -4,10 +4,15 @@ const userServices = require("../models/user/user.services");
 const areaServices = require("../models/area/area.services");
 const poolServices = require("../models/pool/pool.services");
 const walletServices = require("../models/wallet/wallet.services");
+const checkLoggedIn = require("../utils/checkLoggedIn.middleware")
 
-router.get("/get", async (req, res) => {
+router.get("/get", checkLoggedIn,  async (req, res) => {
   /* 	#swagger.tags = ['User']
-        #swagger.description = 'Get user information' */
+        #swagger.description = 'Get user information'
+        #swagger.security = [{
+            "access_token": []
+        }]
+  */
 
   const { userId } = req;
   console.log(userId)
@@ -42,7 +47,7 @@ router.get("/get", async (req, res) => {
   res.status(200).send(result);
 });
 
-router.post("/create-sub-user", async(req, res) => {
+router.post("/create-user", async(req, res) => {
   /* 	#swagger.tags = ['User']
         #swagger.description = 'create sub user ' */
 
@@ -51,7 +56,7 @@ router.post("/create-sub-user", async(req, res) => {
             description: 'Create a new sub user',
             required: true,
             type: 'object',
-            schema: { $ref: "#/definitions/createSubUserRequest" }
+            schema: { $ref: "#/definitions/createUserRequest" }
     } */
   try {
     let token = await userServices.createSubUser(req.body)

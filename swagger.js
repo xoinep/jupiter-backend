@@ -21,20 +21,11 @@ const doc = {
   ],
   // Cho nay define authorization settings
   securityDefinitions: {
-    api_key: {
+    access_token: {
       type: "apiKey",
-      name: "api_key",
+      name: "x-access-token",
       in: "header",
-    },
-    petstore_auth: {
-      type: "oauth2",
-      authorizationUrl: "https://petstore.swagger.io/oauth/authorize",
-      flow: "implicit",
-      scopes: {
-        read_pets: "read your pets",
-        write_pets: "modify pets in your account",
-      },
-    },
+    }
   },
   // Cho nay define model reference
   definitions: {

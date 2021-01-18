@@ -1,23 +1,24 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
-const userSchema = new mongoose.Schema({
-  username: String,
-  password: String,
-  email: String,
-  phone: String,
-  location: {
-    city: String,
-    district: String,
-    province: String,
-    block: String
+const userSchema = new mongoose.Schema(
+  {
+    password: String,
+    email: String,
+    phone: String,
+    location: {
+      city: String,
+      district: String,
+      province: String,
+      ward: String,
+    },
+    avatar: String,
+    detailInformation: {
+      isRoot: Boolean,
+      subAccounts: Array,
+    },
+    googleToken: String,
   },
-  verifyEmail: Boolean,
-  avatar: String,
-  detailInformation: {
-    isRoot: Boolean,
-    subAccounts: Array
-  },
-  createdAt: Date
-});
+  { timestamps: true }
+);
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model('User', userSchema);

@@ -5,18 +5,18 @@ const jwt = require('../../utils/jwt');
 
 const UserServices = {};
 
-UserServices.createUser = async (username, password) => {
-  let user = await User.findOne({ username });
+UserServices.createUser = async (password, email, phone, location, avatar, detailInformation, googleToken) => {
+  let user = await User.findOne({ googleToken });
   if (user) {
-    throw error(400, 'Username already exists');
+    throw error(400, 'User already exists');
   }
   let hashedPass = await hasher.hash(password);
-  user = await User.create({ username, password: hashedPass });
+  user = await User.create({ password: hashedPass, email, phone, location, avatar, detailInformation, googleToken });
   return await jwt.sign({ userId: user._id });
 };
 
 UserServices.createSubUser = async (createSubUserRequest) => {
-  const {username, password} = createSubUserRequest;
+  const { username, password } = createSubUserRequest;
   let user = await User.findOne({ username });
   if (user) {
     throw error(400, 'Username already exists');
@@ -24,7 +24,7 @@ UserServices.createSubUser = async (createSubUserRequest) => {
   createSubUserRequest.password = await hasher.hash(password);
   user = await User.create(createSubUserRequest);
   return await jwt.sign({ userId: user._id });
-}
+};
 UserServices.login = async (userId, password) => {
   let user = await User.findById(userId);
   if (!user) {
@@ -35,6 +35,14 @@ UserServices.login = async (userId, password) => {
     throw error(400, 'Incorrect password');
   }
   return user;
+};
+
+UserServices.loginWithGoogle = async (googleToken) => {
+  let user = await User.findOne({ googleToken });
+  if (!user) {
+    throw error(404, 'User not found!');
+  }
+  return await jwt.sign({ userId: user._id });
 };
 
 module.exports = UserServices;

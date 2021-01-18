@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const encryptor = require('../utils/encrypt');
 const userServices = require('../models/user/user.services');
+const { verifyGoogleToken } = require('../services/google.services');
 
 router.post('/signup', async (req, res) => {
   /* 	#swagger.tags = ['Register']
@@ -35,6 +36,22 @@ router.post('/login', async (req, res) => {
   const { email, password } = req.body;
   console.log(req.body);
   res.sendStatus(200);
+});
+
+router.post('/token', async (req, res) => {
+  const { token } = req.body;
+  let uid;
+  try {
+    uid = await verifyGoogleToken(token);
+  } catch (e) {
+    res.send(e);
+  }
+  try {
+    const user = await userServices.loginWithGoogle(uid);
+    res.send(user);
+  } catch (e) {
+    res.status(e.status).send(e.message);
+  }
 });
 
 // router.get('/test', async (req, res) => {

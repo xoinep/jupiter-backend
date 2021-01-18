@@ -17,7 +17,8 @@ app.use(cors());
 app.use('/doc', swaggerUi.serve, swaggerUi.setup(swagggerFile));
 app.use(checkTokenMiddleware);
 app.use(router);
-app.use(function(err, req, res, next) {
+
+app.use(function (err, req, res, next) {
   console.error(err);
   res.status(err.status || 500);
   if (err.json) {

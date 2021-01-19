@@ -151,6 +151,14 @@
         "responses": {}
       }
     },
+    "/auth/token": {
+      "post": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
     "/transaction/create": {
       "post": {
         "tags": [
@@ -274,13 +282,9 @@
     "SignUpRequest": {
       "type": "object",
       "properties": {
-        "username": {
+        "name": {
           "type": "string",
           "example": "Nguyen Bang Hoang"
-        },
-        "password": {
-          "type": "string",
-          "example": "String"
         },
         "email": {
           "type": "string",
@@ -291,8 +295,33 @@
           "example": "0986323066"
         },
         "location": {
+          "type": "object",
+          "properties": {
+            "address": {
+              "type": "string",
+              "example": "Kim Hoa"
+            },
+            "ward": {
+              "type": "string",
+              "example": "Kim Hoa"
+            },
+            "district": {
+              "type": "string",
+              "example": "Dong Da"
+            },
+            "city": {
+              "type": "string",
+              "example": "Hanoi"
+            },
+            "province": {
+              "type": "string",
+              "example": "Hanoi"
+            }
+          }
+        },
+        "googleToken": {
           "type": "string",
-          "example": "Ha Noi"
+          "example": "String"
         }
       },
       "xml": {

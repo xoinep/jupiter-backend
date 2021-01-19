@@ -5,13 +5,12 @@ const jwt = require('../../utils/jwt');
 
 const UserServices = {};
 
-UserServices.createUser = async (password, email, phone, location, avatar, detailInformation, googleToken) => {
+UserServices.createUser = async (name, email, phone, location, avatar, detailInformation, googleToken) => {
   let user = await User.findOne({ googleToken });
   if (user) {
     throw error(400, 'User already exists');
   }
-  let hashedPass = await hasher.hash(password);
-  user = await User.create({ password: hashedPass, email, phone, location, avatar, detailInformation, googleToken });
+  user = await User.create({ name, email, phone, location, avatar, detailInformation, googleToken });
   return await jwt.sign({ userId: user._id });
 };
 

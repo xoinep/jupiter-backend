@@ -12,8 +12,9 @@ const verifyGoogleToken = async (token) => {
     const userId = payload['sub'];
     return userId;
   } catch (e) {
-    throw error(503, JSON.stringify(e));
+    console.log(e);
+    throw error(503, e);
   }
 };
 
-module.export = { verifyGoogleToken };
+module.exports = { verifyGoogleToken };

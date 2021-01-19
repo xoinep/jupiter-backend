@@ -17,9 +17,14 @@ router.post('/signup', async (req, res) => {
   } */
 
   console.log(req.body);
-  const { email, password } = req.body;
+  const { name, email, phone, location, googleToken, avatar } = req.body;
   try {
-    const token = await userServices.createUser(email, password);
+    let detailInformation = {
+      isRoot: true,
+      subAccounts: [],
+    };
+    const uid = await verifyGoogleToken(googleToken);
+    const token = await userServices.createUser(name, email, phone, location, avatar, detailInformation, uid);
     /* #swagger.responses[200] = { 
         description: 'User successfully obtained.',
         schema: { $ref: "#/definitions/SignUpRequest" } 
@@ -53,10 +58,5 @@ router.post('/token', async (req, res) => {
     res.status(e.status).send(e.message);
   }
 });
-
-// router.get('/test', async (req, res) => {
-//   console.log(req.headers);
-//   res.sendStatus(200);
-// });
 
 module.exports = router;

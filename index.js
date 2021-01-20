@@ -30,6 +30,7 @@ app.use(function (err, req, res, next) {
 });
 
 app.listen(port, () => {
+  console.log("process.env.PORT " + process.env.PORT)
   console.log(`Example app listening at http://localhost:${port}`);
 });
 

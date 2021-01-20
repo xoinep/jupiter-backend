@@ -6,7 +6,6 @@ const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
 const swagggerFile = require('./swagger_output.json');
 const checkTokenMiddleware = require('./utils/checkToken.middleware');
-const checkLoggedInMiddleware = require('./utils/checkLoggedIn.middleware');
 
 /* Routes */
 const router = require('./routes.js');

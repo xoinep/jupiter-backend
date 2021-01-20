@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "./node_modules/node-dev/bin/node-dev swagger.js",
+    "start": "node index.js",
+    "dev": "./node_modules/node-dev/bin/node-dev swagger.js",
     "build": "node swagger.js"
   },
   "dependencies": {

@@ -37,10 +37,46 @@ router.post('/signup', async (req, res) => {
   }
 });
 
-router.post('/login', async (req, res) => {
-  const { email, password } = req.body;
+router.post('/signupDevUser', async (req, res) => {
+  /* 	#swagger.tags = ['Register']
+      #swagger.description = 'Endpoint to sign up user' */
+
+  /*	#swagger.parameters['obj'] = {
+          in: 'body',
+          description: 'Create a new user',
+          required: true,
+          type: 'object',
+          schema: { $ref: "#/definitions/SignUpRequest" }
+  } */
+
   console.log(req.body);
-  res.sendStatus(200);
+  const { name, email, phone, location, googleToken, avatar } = req.body;
+  try {
+    let detailInformation = {
+      isRoot: true,
+      subAccounts: [],
+    };
+    const token = await userServices.createUser(name, email, phone, location, avatar, detailInformation, googleToken);
+    /* #swagger.responses[200] = {
+        description: 'User successfully obtained.',
+        schema: { $ref: "#/definitions/SignUpRequest" }
+  } */
+    console.log(token);
+    res.send(token);
+  } catch (e) {
+    console.log(e);
+    res.status(e.status).send(e.message);
+  }
+});
+
+router.post('/loginWithUserId', async (req, res) => {
+  const { token } = req.body
+  try {
+    const user = await userServices.loginWithGoogle(token);
+    res.send(user);
+  } catch (e) {
+    res.status(e.status).send(e.message);
+  }
 });
 
 router.post('/token', async (req, res) => {

@@ -14,26 +14,17 @@ UserServices.createUser = async (name, email, phone, location, avatar, detailInf
   return await jwt.sign({ userId: user._id });
 };
 
-UserServices.createSubUser = async (createSubUserRequest) => {
-  const { username, password } = createSubUserRequest;
-  let user = await User.findOne({ username });
-  if (user) {
-    throw error(400, 'Username already exists');
-  }
-  createSubUserRequest.password = await hasher.hash(password);
-  user = await User.create(createSubUserRequest);
-  return await jwt.sign({ userId: user._id });
+UserServices.createSubUser = async (name, email, phone, location, avatar, googleToken) => {
+  return await UserServices.createUser(name, email, phone, location, avatar, {isRoot: false}, googleToken)
 };
-UserServices.login = async (userId, password) => {
+
+UserServices.loginWithUserId = async (userId) => {
   let user = await User.findById(userId);
   if (!user) {
     throw error(404, 'User not found!');
   }
-  let isMatched = await hasher.compare(password, user.password);
-  if (!isMatched) {
-    throw error(400, 'Incorrect password');
-  }
-  return user;
+
+  return await jwt.sign({ userId: user._id });
 };
 
 UserServices.loginWithGoogle = async (googleToken) => {

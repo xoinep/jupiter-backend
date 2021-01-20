@@ -143,7 +143,35 @@
         }
       }
     },
-    "/auth/login": {
+    "/auth/signupDevUser": {
+      "post": {
+        "tags": [
+          "Register"
+        ],
+        "description": "Endpoint to sign up user",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Create a new user",
+            "required": true,
+            "type": "object",
+            "schema": {
+              "$ref": "#/definitions/SignUpRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User successfully obtained.",
+            "schema": {
+              "$ref": "#/definitions/SignUpRequest"
+            }
+          }
+        }
+      }
+    },
+    "/auth/loginWithUserId": {
       "post": {
         "tags": [],
         "description": "",

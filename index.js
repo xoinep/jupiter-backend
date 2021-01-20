@@ -31,8 +31,8 @@ app.use(function (err, req, res, next) {
 
 app.listen(port, () => {
   console.log("process.env.PORT " + process.env.PORT)
-  console.log("process.env.PORT " + process.env)
-  console.log("process.env.PORT " + process)
+  console.log("process.env.PORT " + JSON.stringify(process.env))
+  console.log("process.env.PORT " + JSON.stringify(process))
   console.log(`Example app listening at http://localhost:${port}`);
 });
 

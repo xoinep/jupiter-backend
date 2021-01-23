@@ -2,14 +2,18 @@ const Area = require("./area.model");
 
 const AreaServices = {};
 
-AreaServices.createArea = async (createAreaModel) => {
-  const { name, ownerIds, location } = createAreaModel;
-  let area = await Area.create({ name, ownerIds, location });
-  return area;
+AreaServices.createArea = async (name, location, ownerIds, phone, target) => {
+  return  await Area.create({
+    name: name,
+    location: location,
+    ownerIds: ownerIds,
+    phone: phone,
+    target: target,
+  });
 };
 
 AreaServices.getAreasByOwnerId = async (ownerId) => {
-  return await Area.find({ ownerIds: ownerId });
+  return Area.find({ownerIds: ownerId});
 };
 
 module.exports = AreaServices;

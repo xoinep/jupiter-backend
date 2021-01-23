@@ -15,7 +15,14 @@ router.post("/create", async (req, res) => {
             type: 'object',
             schema: { $ref: "#/definitions/createAreaModel" }
     } */
-  let area = await areaServices.createArea(req.body);
+  let { name, phone, location, target, ownerIds } = req.body.payload;
+  if (ownerIds === undefined) {
+    ownerIds = [req.userId]
+  } else {
+    ownerIds.push(req.userId);
+  }
+
+  let area = await areaServices.createArea(name, location, ownerIds, phone, target);
   // Create default wallets for this area
   let wallets_to_be_created = [];
   for (const [key, value] of Object.entries(walletTypes.Fix())) {

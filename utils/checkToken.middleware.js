@@ -3,6 +3,7 @@ const jwt = require("./jwt");
 module.exports = async (req, res, next) => {
   const token = req.header("x-access-token");
   if (!token) {
+    console.log('x-access-token is not found!' )
     return next();
   }
   let data;

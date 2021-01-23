@@ -1,8 +1,9 @@
-var express = require("express");
-var router = express.Router();
-var areaServices = require("../models/area/area.services");
+const express = require("express");
+const router = express.Router();
+const areaServices = require("../models/area/area.services");
 const WalletServices = require("../models/wallet/wallet.services");
-var walletTypes = require("../models/wallet/wallet.types");
+const walletTypes = require("../models/wallet/wallet.types");
+
 router.post("/create", async (req, res) => {
   /* 	#swagger.tags = ['Area']
         #swagger.description = 'Create a new Area as well as default wallets' */
@@ -27,12 +28,11 @@ router.post("/create", async (req, res) => {
     };
     wallets_to_be_created.push(wallet_model);
   }
-  wallets = await WalletServices.createWallets(wallets_to_be_created);
+  let wallets = await WalletServices.createWallets(wallets_to_be_created);
   res.send({
     area: area,
     wallets: wallets,
   });
-  return;
 });
 
 module.exports = router;

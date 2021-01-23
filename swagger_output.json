@@ -363,13 +363,23 @@
           "type": "string",
           "example": "Ten Khu Vuc"
         },
-        "ownerId": {
-          "type": "string",
-          "example": "5ff6cd355ee1e9249035ee7d"
+        "ownerIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         },
         "location": {
           "type": "string",
-          "example": "Ha Noi"
+          "example": "String - location"
+        },
+        "target": {
+          "type": "string",
+          "example": "String - Target to be raised!"
+        },
+        "phone": {
+          "type": "string",
+          "example": "string"
         }
       },
       "xml": {

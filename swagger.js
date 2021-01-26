@@ -54,10 +54,25 @@ const doc = {
     },
     createPoolModel: {
       name: 'String',
-      // ownerId: "mongoose.SchemaTypes.ObjectId - 5ff6c9d75d8593237c1c5b5d",
       areaId: 'mongoose.SchemaTypes.ObjectId - 5ff6c9d75d8593237c1c5b5d',
       target: 'String',
       unit: 'String',
+    },
+    createPoolResponse: {
+      pool: {
+        name: 'String',
+        areaId: 'mongoose.SchemaTypes.ObjectId - 5ff6c9d75d8593237c1c5b5d',
+        target: 'String',
+        unit: 'String',
+      },
+      wallet: {
+        name: "String",
+        ownerId: "mongoose.SchemaTypes.ObjectId",
+        unit: "String",
+        areaId: "mongoose.SchemaTypes.ObjectId",
+        balance: "Number",
+        poolId: "mongoose.SchemaTypes.ObjectId",
+      }
     },
     getUserModel: {
       userId: 'mongoose.SchemaTypes.ObjectId - 5ff6c9d75d8593237c1c5b5d',

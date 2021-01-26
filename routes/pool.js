@@ -14,13 +14,10 @@ router.post("/create", async (req, res) => {
             type: 'object',
             schema: { $ref: "#/definitions/createPoolModel" }
     } */
-
-  let pool = await poolServices.createPool(req.body);
+  const { name, areaId, target, unit } = req.body.payload;
+  let pool = await poolServices.createPool( name, areaId, target, unit);
   console.log(pool);
-  /* #swagger.responses[200] = { 
-        description: 'User successfully obtained.',
-        schema: { $ref: "#/definitions/createPoolModel" } 
-  } */
+
   // Create specific wallet for pool
   let wallet_in_pool = {
     name: pool.target,
@@ -32,6 +29,10 @@ router.post("/create", async (req, res) => {
 
   let wallet = await WalletServices.createWallet(wallet_in_pool);
   res.send({ pool, wallet });
+  /* #swagger.responses[200] = {
+        description: 'User successfully obtained.',
+        schema: { $ref: "#/definitions/createPoolResponse" }
+  } */
 });
 
 module.exports = router;

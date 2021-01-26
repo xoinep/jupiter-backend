@@ -12,11 +12,11 @@ WalletServices.createWallets = async (wallets) => {
 };
 
 WalletServices.getWalletByPoolIds = async (poolIds) => {
-  return await Wallet.find({ poolId: { $in: poolIds } });
+  return Wallet.find({poolId: {$in: poolIds}});
 };
 
 WalletServices.getWalletByAreaIds = async (areaIds) => {
-  return await Wallet.find({ areaId: { $in: areaIds } });
+  return Wallet.find({ areaId: { $in: areaIds } });
 };
 
 module.exports = WalletServices;

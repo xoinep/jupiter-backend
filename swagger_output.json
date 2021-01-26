@@ -69,7 +69,7 @@
           "200": {
             "description": "User successfully obtained.",
             "schema": {
-              "$ref": "#/definitions/createPoolModel"
+              "$ref": "#/definitions/createPoolResponse"
             }
           }
         }
@@ -408,6 +408,64 @@
       },
       "xml": {
         "name": "createPoolModel"
+      }
+    },
+    "createPoolResponse": {
+      "type": "object",
+      "properties": {
+        "pool": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "example": "String"
+            },
+            "areaId": {
+              "type": "string",
+              "example": "mongoose.SchemaTypes.ObjectId - 5ff6c9d75d8593237c1c5b5d"
+            },
+            "target": {
+              "type": "string",
+              "example": "String"
+            },
+            "unit": {
+              "type": "string",
+              "example": "String"
+            }
+          }
+        },
+        "wallet": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "example": "String"
+            },
+            "ownerId": {
+              "type": "string",
+              "example": "mongoose.SchemaTypes.ObjectId"
+            },
+            "unit": {
+              "type": "string",
+              "example": "String"
+            },
+            "areaId": {
+              "type": "string",
+              "example": "mongoose.SchemaTypes.ObjectId"
+            },
+            "balance": {
+              "type": "string",
+              "example": "Number"
+            },
+            "poolId": {
+              "type": "string",
+              "example": "mongoose.SchemaTypes.ObjectId"
+            }
+          }
+        }
+      },
+      "xml": {
+        "name": "createPoolResponse"
       }
     },
     "getUserModel": {

@@ -13,8 +13,9 @@ router.post("/create", async (req, res) => {
             type: 'object',
             schema: { $ref: "#/definitions/createTransactionModel" }
     } */
-
-  let transaction = await transactionService.createTransaction(req.body);
+  const { walletId, quantity, title, customData} = req.body.payload;
+  const userId = req.userId;
+  let transaction = await transactionService.createTransaction(walletId, userId, Date.now(), quantity, title, customData);
   /* #swagger.responses[200] = { 
         description: 'Transaction successfully created.',
         schema: { $ref: "#/definitions/createTransactionModel" } 

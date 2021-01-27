@@ -2,8 +2,8 @@ const Transaction = require("./transaction.model");
 
 const TransactionServices = {};
 
-TransactionServices.createTransaction = async (createTransactionModel) => {
-  return await Transaction.create(createTransactionModel);
+TransactionServices.createTransaction = async (walletId, creatorId, createdDate, quantity, title, customData) => {
+  return await Transaction.create({walletId: walletId, creatorId:creatorId, createdDate:createdDate, quantity: quantity, title:title, customData:customData});
 };
 
 TransactionServices.findTransactionsInRangeByCreatorId = async (

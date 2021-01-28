@@ -4,7 +4,9 @@ const userServices = require("../models/user/user.services");
 const areaServices = require("../models/area/area.services");
 const poolServices = require("../models/pool/pool.services");
 const walletServices = require("../models/wallet/wallet.services");
+const transactionService = require("../models/transaction/transaction.services");
 const checkLoggedIn = require("../utils/checkLoggedIn.middleware")
+const moment = require("moment");
 
 router.get("/get", checkLoggedIn,  async (req, res) => {
   /* 	#swagger.tags = ['User']
@@ -43,7 +45,18 @@ router.get("/get", checkLoggedIn,  async (req, res) => {
     pools,
     wallets: [... walletByPools, ... walletsByAreas]
   }
-  console.log(result)
+  // const today = moment();
+  // const startDate = today.startOf('week').format("YYYY-MM-DD")
+  // const endDate = today.endOf('week').format("YYYY-MM-DD")
+  // console.log("start Date " + startDate);
+  // console.log("end Date " + endDate);
+  //
+  // for (const wallet of result.wallets) {
+  //   let walletId = wallet._id;
+  //   let transactionsByWalletId = await transactionService.findTransactionsInRangeByWalletId(startDate, endDate, walletId)
+  //   result.transactions.push(transactionsByWalletId)
+  // }
+  // console.log(result)
   res.status(200).send(result);
 });
 

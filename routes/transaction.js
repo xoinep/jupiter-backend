@@ -47,9 +47,27 @@ router.post("/get-by-id", async(req, res) => {
             description: 'Get transactions by creator-id',
             required: true,
             type: 'object',
-            schema: { $ref: "#/definitions/getTransactionsInRangesByCreatorId" }
+            schema: { $ref: "#/definitions/getTransactionsInRangesByWalletIdModel" }
     } */
-  let transactions = await transactionService.findTransactionsInRangeByCreatorId(req.body);
+  const {startDate, endDate, walletId} = req.body.payload;
+  let transactions = await transactionService.findTransactionsInRangeByWalletId(startDate, endDate, walletId);
+  res.send(transactions);
+})
+
+router.post("/get-by-ids", async(req, res) => {
+  /* 	#swagger.tags = ['Transaction']
+        #swagger.description = 'Get transactions by wallet-id all time' */
+
+  /*	#swagger.parameters['obj'] = {
+            in: 'body',
+            description: 'Get transactions by creator-id',
+            required: true,
+            type: 'object',
+            schema: { $ref: "#/definitions/getTransactionsInRangesByWalletIdModel" }
+    } */
+  const {startDate, endDate, walletIds } = req.body.payload;
+  let transactions = await transactionService.findTransactionsInRangeByWalletIds(startDate, endDate, walletIds);
+  console.log(transactions)
   res.send(transactions);
 })
 

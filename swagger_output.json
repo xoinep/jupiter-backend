@@ -250,7 +250,28 @@
             "required": true,
             "type": "object",
             "schema": {
-              "$ref": "#/definitions/getTransactionsInRangesByCreatorId"
+              "$ref": "#/definitions/getTransactionsInRangesByWalletIdModel"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/transaction/get-by-ids": {
+      "post": {
+        "tags": [
+          "Transaction"
+        ],
+        "description": "Get transactions by wallet-id all time",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Get transactions by creator-id",
+            "required": true,
+            "type": "object",
+            "schema": {
+              "$ref": "#/definitions/getTransactionsInRangesByWalletIdModel"
             }
           }
         ],
@@ -542,15 +563,15 @@
       "properties": {
         "walletId": {
           "type": "string",
-          "example": "mongoose.SchemaTypes.ObjectId"
+          "example": "600c46772a3020039d1ebb0a"
         },
         "startDate": {
-          "type": "number",
-          "example": 1610167187000
+          "type": "string",
+          "example": "2021-01-24T09:31:27.114Z"
         },
         "endDate": {
-          "type": "number",
-          "example": 1610348546000
+          "type": "string",
+          "example": "2021-01-28T09:31:27.114Z"
         }
       },
       "xml": {
@@ -665,6 +686,18 @@
       },
       "xml": {
         "name": "createUserRequest"
+      }
+    },
+    "findWalletsByIdRequest": {
+      "type": "object",
+      "properties": {
+        "areaId": {
+          "type": "string",
+          "example": "String"
+        }
+      },
+      "xml": {
+        "name": "findWalletsByIdRequest"
       }
     }
   }

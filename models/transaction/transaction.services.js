@@ -17,13 +17,19 @@ TransactionServices.findTransactionsInRangeByCreatorId = async (
 };
 
 TransactionServices.findTransactionsInRangeByWalletId = async (
-    getTransactionsInRangesByWalletIdModel
+    startDate, endDate, walletId
 ) => {
-  const {startDate, endDate, walletId} = getTransactionsInRangesByWalletIdModel;
   return Transaction.find({
-    createdDate: {$gte: startDate, $lte: endDate},
+    createdAt: {$gte: startDate, $lte: endDate},
     walletId: walletId,
   });
 };
+
+TransactionServices.findTransactionsInRangeByWalletIds = async (startDate, endDate, walletIds) => {
+ return Transaction.find({
+   createdAt: {$gte: startDate, $lte: endDate},
+   walletId: {$in: walletIds}
+ })
+}
 
 module.exports = TransactionServices;

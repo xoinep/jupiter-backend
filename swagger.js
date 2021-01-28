@@ -93,9 +93,9 @@ const doc = {
       endDate: 1610348546000,
     },
     getTransactionsInRangesByWalletIdModel: {
-      walletId: 'mongoose.SchemaTypes.ObjectId',
-      startDate: 1610167187000,
-      endDate: 1610348546000,
+      walletId: '600c46772a3020039d1ebb0a',
+      startDate: "2021-01-24T09:31:27.114Z",
+      endDate: "2021-01-28T09:31:27.114Z",
     },
     createNoteModel: {
       noteType: 'NoteType',
@@ -127,6 +127,9 @@ const doc = {
         subAccounts: ['1'],
       },
     },
+    findWalletsByIdRequest: {
+      areaId: 'String'
+    }
   },
 };
 

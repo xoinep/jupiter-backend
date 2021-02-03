@@ -5,17 +5,17 @@ const jwt = require('../../utils/jwt');
 
 const UserServices = {};
 
-UserServices.createUser = async (name, email, phone, location, avatar, detailInformation, googleToken) => {
-  let user = await User.findOne({ googleToken });
+UserServices.createUser = async (name, email, phone, location, avatar, detailInformation) => {
+  let user = await User.findOne({ email });
   if (user) {
     throw error(400, 'User already exists');
   }
-  user = await User.create({ name, email, phone, location, avatar, detailInformation, googleToken });
+  user = await User.create({ name, email, phone, location, avatar, detailInformation });
   return await jwt.sign({ userId: user._id });
 };
 
-UserServices.createSubUser = async (name, email, phone, location, avatar, googleToken) => {
-  return await UserServices.createUser(name, email, phone, location, avatar, {isRoot: false}, googleToken)
+UserServices.createSubUser = async (name, email, phone, location, avatar) => {
+  return await UserServices.createUser(name, email, phone, location, avatar, { isRoot: false });
 };
 
 UserServices.loginWithUserId = async (userId) => {
@@ -27,8 +27,8 @@ UserServices.loginWithUserId = async (userId) => {
   return await jwt.sign({ userId: user._id });
 };
 
-UserServices.loginWithGoogle = async (googleToken) => {
-  let user = await User.findOne({ googleToken });
+UserServices.loginWithGoogle = async (email) => {
+  let user = await User.findOne({ email });
   if (!user) {
     throw error(404, 'User not found!');
   }

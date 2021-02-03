@@ -9,8 +9,8 @@ const verifyGoogleToken = async (token) => {
       audience: '950646444363-ae1gm0h7kdl6bkjgqvb6m12k26m0c988.apps.googleusercontent.com',
     });
     const payload = ticket.getPayload();
-    const userId = payload['sub'];
-    return userId;
+    const email = payload['email'];
+    return email;
   } catch (e) {
     console.log(e);
     throw error(503, e);

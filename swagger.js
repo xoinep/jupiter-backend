@@ -129,6 +129,13 @@ const doc = {
     },
     findWalletsByIdRequest: {
       areaId: 'String'
+    },
+    findWalletsByPoolIdRequest: {
+      poolId: 'String'
+    },
+    findWalletsByPoolIdAreaIdRequest: {
+      poolId: 'String',
+      areaId: 'String'
     }
   },
 };

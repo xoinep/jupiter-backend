@@ -33,30 +33,12 @@ router.get("/get", checkLoggedIn,  async (req, res) => {
     poolIds.push(e._id);
   });
 
-  let walletByPools = await walletServices.getWalletByPoolIds(poolIds);
-  console.log(walletByPools);
-
-  let walletsByAreas = await walletServices.getWalletByAreaIds(areaIds);
-  console.log(walletsByAreas);
-
   // Format data
   let result = {
     areas,
     pools,
-    wallets: [... walletByPools, ... walletsByAreas]
   }
-  // const today = moment();
-  // const startDate = today.startOf('week').format("YYYY-MM-DD")
-  // const endDate = today.endOf('week').format("YYYY-MM-DD")
-  // console.log("start Date " + startDate);
-  // console.log("end Date " + endDate);
-  //
-  // for (const wallet of result.wallets) {
-  //   let walletId = wallet._id;
-  //   let transactionsByWalletId = await transactionService.findTransactionsInRangeByWalletId(startDate, endDate, walletId)
-  //   result.transactions.push(transactionsByWalletId)
-  // }
-  // console.log(result)
+  console.log(`userId ${userId} data ${JSON.stringify(result)}`)
   res.status(200).send(result);
 });
 

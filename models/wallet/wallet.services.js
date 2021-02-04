@@ -15,6 +15,10 @@ WalletServices.getWalletByPoolIds = async (poolIds) => {
   return Wallet.find({poolId: {$in: poolIds}});
 };
 
+WalletServices.getWalletByPoolAndAreaIds = async (poolIds, areaIds) => {
+  return Wallet.find({$or: [{poolId: {$in: poolIds}}, {areaId: {$in: areaIds}}]});
+};
+
 WalletServices.getWalletByAreaIds = async (areaIds) => {
   return Wallet.find({ areaId: { $in: areaIds } });
 };

@@ -699,6 +699,34 @@
       "xml": {
         "name": "findWalletsByIdRequest"
       }
+    },
+    "findWalletsByPoolIdRequest": {
+      "type": "object",
+      "properties": {
+        "poolId": {
+          "type": "string",
+          "example": "String"
+        }
+      },
+      "xml": {
+        "name": "findWalletsByPoolIdRequest"
+      }
+    },
+    "findWalletsByPoolIdAreaIdRequest": {
+      "type": "object",
+      "properties": {
+        "poolId": {
+          "type": "string",
+          "example": "String"
+        },
+        "areaId": {
+          "type": "string",
+          "example": "String"
+        }
+      },
+      "xml": {
+        "name": "findWalletsByPoolIdAreaIdRequest"
+      }
     }
   }
 }

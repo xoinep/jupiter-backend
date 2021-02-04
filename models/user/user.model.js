@@ -17,7 +17,6 @@ const userSchema = new mongoose.Schema(
       isRoot: Boolean,
       subAccounts: Array,
     },
-    googleToken: String,
   },
   { timestamps: true }
 );

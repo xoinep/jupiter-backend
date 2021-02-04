@@ -17,14 +17,14 @@ router.post('/signup', async (req, res) => {
   } */
 
   console.log(req.body);
-  const { name, email, phone, location, googleToken, avatar } = req.body;
+  const { name, phone, location, googleToken, avatar } = req.body;
   try {
     let detailInformation = {
       isRoot: true,
       subAccounts: [],
     };
-    const uid = await verifyGoogleToken(googleToken);
-    const token = await userServices.createUser(name, email, phone, location, avatar, detailInformation, uid);
+    const email = await verifyGoogleToken(googleToken);
+    const token = await userServices.createUser(name, email, phone, location, avatar, detailInformation);
     /* #swagger.responses[200] = { 
         description: 'User successfully obtained.',
         schema: { $ref: "#/definitions/SignUpRequest" } 
@@ -56,7 +56,7 @@ router.post('/signupDevUser', async (req, res) => {
       isRoot: true,
       subAccounts: [],
     };
-    const token = await userServices.createUser(name, email, phone, location, avatar, detailInformation, googleToken);
+    const token = await userServices.createUser(name, email, phone, location, avatar, detailInformation);
     /* #swagger.responses[200] = {
         description: 'User successfully obtained.',
         schema: { $ref: "#/definitions/SignUpRequest" }
@@ -69,26 +69,29 @@ router.post('/signupDevUser', async (req, res) => {
   }
 });
 
-router.post('/loginWithUserId', async (req, res) => {
-  const { token } = req.body
+// TODO: Disable this on production
+router.post('/loginWithEmail', async (req, res) => {
+  const { email } = req.body;
+  console.log(email);
   try {
-    const user = await userServices.loginWithGoogle(token);
+    const user = await userServices.loginWithGoogle(email);
     res.send(user);
   } catch (e) {
+    console.log(e);
     res.status(e.status).send(e.message);
   }
 });
 
 router.post('/token', async (req, res) => {
   const { token } = req.body;
-  let uid;
+  let data;
   try {
-    uid = await verifyGoogleToken(token);
+    email = await verifyGoogleToken(token);
   } catch (e) {
     res.send(e);
   }
   try {
-    const user = await userServices.loginWithGoogle(uid);
+    const user = await userServices.loginWithGoogle(email);
     res.send(user);
   } catch (e) {
     res.status(e.status).send(e.message);

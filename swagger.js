@@ -136,6 +136,9 @@ const doc = {
     findWalletsByPoolIdAreaIdRequest: {
       poolId: 'String',
       areaId: 'String'
+    },
+    deleteTransactionByIdRequest: {
+      transactionId: 'String'
     }
   },
 };

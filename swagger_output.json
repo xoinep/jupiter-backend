@@ -254,7 +254,12 @@
             }
           }
         ],
-        "responses": {}
+        "responses": {},
+        "security": [
+          {
+            "access_token": []
+          }
+        ]
       }
     },
     "/transaction/get-by-ids": {
@@ -272,6 +277,27 @@
             "type": "object",
             "schema": {
               "$ref": "#/definitions/getTransactionsInRangesByWalletIdModel"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/transaction/delete-by-id": {
+      "delete": {
+        "tags": [
+          "Transaction"
+        ],
+        "description": "Delete transaction by Id",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Get transactions by creator-id",
+            "required": true,
+            "type": "object",
+            "schema": {
+              "$ref": "#/definitions/deleteTransactionByIdRequest"
             }
           }
         ],
@@ -726,6 +752,18 @@
       },
       "xml": {
         "name": "findWalletsByPoolIdAreaIdRequest"
+      }
+    },
+    "deleteTransactionByIdRequest": {
+      "type": "object",
+      "properties": {
+        "transactionId": {
+          "type": "string",
+          "example": "String"
+        }
+      },
+      "xml": {
+        "name": "deleteTransactionByIdRequest"
       }
     }
   }

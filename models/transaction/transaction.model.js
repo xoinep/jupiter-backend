@@ -6,8 +6,9 @@ const transactionSchema = new mongoose.Schema({
   quantity: Number,
   unit: String,
   costPerUnit: Number,
-  title: String,
   customData: mongoose.SchemaTypes.Mixed,
+  name: String,
+  createdAt: { type: Date, default: Date.now }
 },{ timestamps: true });
 
 module.exports = mongoose.model("Transaction", transactionSchema);

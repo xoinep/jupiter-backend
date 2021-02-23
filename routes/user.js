@@ -39,7 +39,6 @@ router.get('/get', checkLoggedIn, async (req, res) => {
     pools,
     user,
   };
-  console.log('new');
   console.log(`userId ${userId} data ${JSON.stringify(result)}`);
   res.status(200).send(result);
 });

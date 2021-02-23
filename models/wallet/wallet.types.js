@@ -7,6 +7,7 @@ walletTypes.Fix = () => {
     EQUIPMENT: "unit",
     CLEANING: "vnd",
     LABOR: "vnd",
+    SEED_UNIT: "con"
   };
 };
 

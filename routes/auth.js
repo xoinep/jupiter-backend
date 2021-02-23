@@ -84,6 +84,7 @@ router.post('/loginWithEmail', async (req, res) => {
 
 router.post('/token', async (req, res) => {
   const { token } = req.body;
+  let email = null;
   try {
     email = await verifyGoogleToken(token);
   } catch (e) {
@@ -91,8 +92,6 @@ router.post('/token', async (req, res) => {
   }
   try {
     const user = await userServices.loginWithGoogle(email);
-    console.log(user);
-    console.log('123');
     res.send(user);
   } catch (e) {
     res.status(e.status).send(e.message);

@@ -87,7 +87,6 @@ router.post('/token', async (req, res) => {
   let email = null;
   try {
     email = await verifyGoogleToken(token);
-    console.log(email);
   } catch (e) {
     res.send(e);
   }

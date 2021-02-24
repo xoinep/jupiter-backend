@@ -19,7 +19,7 @@ router.post("/create", async (req, res) => {
   if (ownerIds === undefined) {
     ownerIds = [req.userId]
   } else {
-    ownerIds.push(req.userId);
+    ownerIds.unshift(req.userId);
   }
 
   let area = await areaServices.createArea(name, location, ownerIds, phone, target);

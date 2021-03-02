@@ -1,9 +1,9 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const poolServices = require("../models/pool/pool.services");
-const WalletServices = require("../models/wallet/wallet.services");
+const poolServices = require('../models/pool/pool.services');
+const WalletServices = require('../models/wallet/wallet.services');
 
-router.post("/create", async (req, res) => {
+router.post('/create', async (req, res) => {
   /* 	#swagger.tags = ['Pool']
         #swagger.description = 'Create a new Pool' */
 
@@ -14,8 +14,8 @@ router.post("/create", async (req, res) => {
             type: 'object',
             schema: { $ref: "#/definitions/createPoolModel" }
     } */
-  const { name, areaId, target, unit } = req.body.payload;
-  let pool = await poolServices.createPool( name, areaId, target, unit);
+  const { name, areaId, target, unit, area } = req.body.payload;
+  let pool = await poolServices.createPool(name, areaId, target, unit, area);
   console.log(pool);
 
   // Create specific wallet for pool

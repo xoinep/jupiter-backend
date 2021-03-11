@@ -42,8 +42,6 @@ TransactionServices.findTransactionsInRangeByWalletId = async (startDate, endDat
 };
 
 TransactionServices.findTransactionsInRangeByWalletIds = async (startDate, endDate, walletIds) => {
-  console.log(startDate);
-  console.log(endDate);
   return await Transaction.find({
     createdAt: { $gte: startDate, $lte: endDate },
     walletId: { $in: walletIds },

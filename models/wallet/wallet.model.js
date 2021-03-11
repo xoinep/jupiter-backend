@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const walletSchema = new mongoose.Schema({
   name: String,
@@ -7,6 +7,7 @@ const walletSchema = new mongoose.Schema({
   areaId: mongoose.SchemaTypes.ObjectId,
   balance: Number,
   poolId: mongoose.SchemaTypes.ObjectId,
+  createdAt: { type: Date, default: Date.now },
 });
 
-module.exports = mongoose.model("Wallet", walletSchema);
+module.exports = mongoose.model('Wallet', walletSchema);

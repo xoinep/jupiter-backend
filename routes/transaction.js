@@ -63,8 +63,10 @@ router.post('/get-by-id', async (req, res) => {
             type: 'object',
             schema: { $ref: "#/definitions/getTransactionsInRangesByWalletIdModel" }
     } */
-  const { startDate, endDate, walletId } = req.body.payload;
+  const { startDate, endDate, walletId } = req.body;
+  console.log(startDate, endDate, walletId);
   let transactions = await transactionService.findTransactionsInRangeByWalletId(startDate, endDate, walletId);
+  console.log(transactions);
   res.send(transactions);
 });
 
@@ -80,9 +82,8 @@ router.post('/get-by-ids', async (req, res) => {
             schema: { $ref: "#/definitions/getTransactionsInRangesByWalletIdModel" }
     } */
 
-  const { startDate, endDate, walletIds } = req.body.payload;
+  const { startDate, endDate, walletIds } = req.body;
   let transactions = await transactionService.findTransactionsInRangeByWalletIds(startDate, endDate, walletIds);
-  console.log(transactions);
   res.send(transactions);
 });
 

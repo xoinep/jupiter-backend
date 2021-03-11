@@ -16,18 +16,8 @@ router.post('/create', async (req, res) => {
     } */
   const { name, areaId, target, unit, area } = req.body.payload;
   let pool = await poolServices.createPool(name, areaId, target, unit, area);
-  console.log(pool);
-
-  // Create specific wallet for pool
-  let wallet_in_pool = {
-    name: pool.target,
-    unit: pool.unit,
-    areaId: pool.areaId,
-    balance: 0,
-    poolId: pool._id,
-  };
-
-  let wallet = await WalletServices.createWallet(wallet_in_pool);
+  let wallet = await WalletServices.createWallet(name, areaId, target, unit, area, new Date());
+  console.log(wallet);
   res.send({ pool, wallet });
   /* #swagger.responses[200] = {
         description: 'User successfully obtained.',

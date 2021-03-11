@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const transactionSchema = new mongoose.Schema({
   walletId: mongoose.SchemaTypes.ObjectId,
@@ -8,7 +8,7 @@ const transactionSchema = new mongoose.Schema({
   costPerUnit: Number,
   customData: mongoose.SchemaTypes.Mixed,
   name: String,
-  createdAt: { type: Date, default: Date.now }
-},{ timestamps: true });
+  createdAt: { type: Date, default: Date.now },
+});
 
-module.exports = mongoose.model("Transaction", transactionSchema);
+module.exports = mongoose.model('Transaction', transactionSchema);

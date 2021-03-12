@@ -10,7 +10,8 @@ TransactionServices.createTransaction = async (
   customData,
   name,
   unit,
-  cost
+  cost,
+  poolId
 ) => {
   let res = await Transaction.create({
     walletId: walletId,
@@ -21,6 +22,7 @@ TransactionServices.createTransaction = async (
     customData: customData,
     unit: unit,
     costPerUnit: cost,
+    poolId: poolId,
   });
   console.log(res);
   return res;

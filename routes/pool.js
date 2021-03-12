@@ -14,9 +14,10 @@ router.post('/create', async (req, res) => {
             type: 'object',
             schema: { $ref: "#/definitions/createPoolModel" }
     } */
+
   const { name, areaId, target, unit, area } = req.body.payload;
   let pool = await poolServices.createPool(name, areaId, target, unit, area);
-  let wallet = await WalletServices.createWallet(name, areaId, target, unit, area, new Date());
+  let wallet = await WalletServices.createWallet('SEED_UNIT', areaId, unit, pool._id, new Date());
   console.log(wallet);
   res.send({ pool, wallet });
   /* #swagger.responses[200] = {

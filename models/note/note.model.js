@@ -1,16 +1,11 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const noteSchema = new mongoose.Schema({
-    noteType: String,
-    notes: [
-        {
-            date: Date,
-            content: Array,
-            creatorId: mongoose.SchemaTypes.ObjectId
-        }
-    ],
-    areaId: mongoose.SchemaTypes.ObjectId,
-    poolId: mongoose.SchemaTypes.ObjectId,
+  noteType: String,
+  content: String,
+  createdAt: { type: Date, default: Date.now },
+  areaId: mongoose.SchemaTypes.ObjectId,
+  poolId: mongoose.SchemaTypes.ObjectId,
 });
 
-module.exports = mongoose.model("Note", noteSchema);
+module.exports = mongoose.model('Note', noteSchema);

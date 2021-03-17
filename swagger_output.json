@@ -331,6 +331,41 @@
           }
         }
       }
+    },
+    "/note/get-by-poolId": {
+      "post": {
+        "tags": [],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Get notes from poolId",
+            "required": true,
+            "type": "object",
+            "schema": {
+              "$ref": "#/definitions/getByPoolId"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/note/update-by-id": {
+      "put": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/note/delete-by-id": {
+      "delete": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
     }
   },
   "definitions": {
@@ -644,6 +679,18 @@
       },
       "xml": {
         "name": "createNoteModel"
+      }
+    },
+    "getByPoolId": {
+      "type": "object",
+      "properties": {
+        "poolId": {
+          "type": "string",
+          "example": "mongoose.SchemaType.ObjectId"
+        }
+      },
+      "xml": {
+        "name": "getByPoolId"
       }
     },
     "createUserRequest": {

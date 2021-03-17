@@ -49,8 +49,8 @@ const doc = {
       name: 'Ten Khu Vuc',
       ownerIds: [''],
       location: 'String - location',
-      target: "String - Target to be raised!",
-      phone: 'string'
+      target: 'String - Target to be raised!',
+      phone: 'string',
     },
     createPoolModel: {
       name: 'String',
@@ -66,13 +66,13 @@ const doc = {
         unit: 'String',
       },
       wallet: {
-        name: "String",
-        ownerId: "mongoose.SchemaTypes.ObjectId",
-        unit: "String",
-        areaId: "mongoose.SchemaTypes.ObjectId",
-        balance: "Number",
-        poolId: "mongoose.SchemaTypes.ObjectId",
-      }
+        name: 'String',
+        ownerId: 'mongoose.SchemaTypes.ObjectId',
+        unit: 'String',
+        areaId: 'mongoose.SchemaTypes.ObjectId',
+        balance: 'Number',
+        poolId: 'mongoose.SchemaTypes.ObjectId',
+      },
     },
     getUserModel: {
       userId: 'mongoose.SchemaTypes.ObjectId - 5ff6c9d75d8593237c1c5b5d',
@@ -94,8 +94,8 @@ const doc = {
     },
     getTransactionsInRangesByWalletIdModel: {
       walletId: '600c46772a3020039d1ebb0a',
-      startDate: "2021-01-24T09:31:27.114Z",
-      endDate: "2021-01-28T09:31:27.114Z",
+      startDate: '2021-01-24T09:31:27.114Z',
+      endDate: '2021-01-28T09:31:27.114Z',
     },
     createNoteModel: {
       noteType: 'NoteType',
@@ -107,6 +107,9 @@ const doc = {
         },
       ],
       areaId: 'mongoose.SchemaType.ObjectId',
+      poolId: 'mongoose.SchemaType.ObjectId',
+    },
+    getByPoolId: {
       poolId: 'mongoose.SchemaType.ObjectId',
     },
     createUserRequest: {
@@ -128,18 +131,18 @@ const doc = {
       },
     },
     findWalletsByIdRequest: {
-      areaId: 'String'
+      areaId: 'String',
     },
     findWalletsByPoolIdRequest: {
-      poolId: 'String'
+      poolId: 'String',
     },
     findWalletsByPoolIdAreaIdRequest: {
       poolId: 'String',
-      areaId: 'String'
+      areaId: 'String',
     },
     deleteTransactionByIdRequest: {
-      transactionId: 'String'
-    }
+      transactionId: 'String',
+    },
   },
 };
 

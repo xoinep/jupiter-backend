@@ -16,7 +16,6 @@ router.get('/get', checkLoggedIn, async (req, res) => {
     */
 
   const { userId } = req;
-  console.log(userId);
   let user = await userServices.findUserById(userId);
   // Get user's Areas
   let areas = await areaServices.getAreasByOwnerId(userId);
@@ -39,7 +38,6 @@ router.get('/get', checkLoggedIn, async (req, res) => {
     pools,
     user,
   };
-  console.log(`userId ${userId} data ${JSON.stringify(result)}`);
   res.status(200).send(result);
 });
 

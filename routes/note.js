@@ -44,8 +44,6 @@ router.put('/update-by-id', async (req, res) => {
 
 router.delete('/delete-by-id', async (req, res) => {
   const { noteId } = req.body;
-  console.log(req.body);
-  console.log(noteId);
   await noteServices.deleteById(noteId);
   res.sendStatus(200);
 });

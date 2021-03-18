@@ -24,7 +24,6 @@ TransactionServices.createTransaction = async (
     costPerUnit: cost,
     poolId: poolId,
   });
-  console.log(res);
   return res;
 };
 

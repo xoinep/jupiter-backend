@@ -14,7 +14,6 @@ router.post('/create', async (req, res) => {
             schema: { $ref: "#/definitions/createTransactionModel" }
     } */
   const { walletId, quantity, customData, name, unit, cost, poolId } = req.body.payload;
-  console.log(req.body.payload);
   const userId = req.userId;
   let transaction = await transactionService.createTransaction(
     walletId,
@@ -65,9 +64,7 @@ router.post('/get-by-id', async (req, res) => {
             schema: { $ref: "#/definitions/getTransactionsInRangesByWalletIdModel" }
     } */
   const { startDate, endDate, walletId } = req.body;
-  console.log(startDate, endDate, walletId);
   let transactions = await transactionService.findTransactionsInRangeByWalletId(startDate, endDate, walletId);
-  console.log(transactions);
   res.send(transactions);
 });
 
@@ -101,7 +98,6 @@ router.delete('/delete-by-id', async (req, res) => {
             schema: { $ref: "#/definitions/deleteTransactionByIdRequest" }
     } */
   const { transactionId } = req.body;
-  console.log('deleting transactionId ' + transactionId);
   await transactionService.deleteById(transactionId);
   res.sendStatus(200);
 });

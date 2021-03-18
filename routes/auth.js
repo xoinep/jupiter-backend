@@ -16,7 +16,6 @@ router.post('/signup', async (req, res) => {
           schema: { $ref: "#/definitions/SignUpRequest" }
   } */
 
-  console.log(req.body);
   const { name, phone, location, googleToken, avatar } = req.body;
   try {
     let detailInformation = {
@@ -29,10 +28,8 @@ router.post('/signup', async (req, res) => {
         description: 'User successfully obtained.',
         schema: { $ref: "#/definitions/SignUpRequest" } 
   } */
-    console.log(token);
     res.send(token);
   } catch (e) {
-    console.log(e);
     res.status(e.status).send(e.message);
   }
 });
@@ -49,7 +46,6 @@ router.post('/signupDevUser', async (req, res) => {
           schema: { $ref: "#/definitions/SignUpRequest" }
   } */
 
-  console.log(req.body);
   const { name, email, phone, location, googleToken, avatar } = req.body;
   try {
     let detailInformation = {
@@ -61,10 +57,8 @@ router.post('/signupDevUser', async (req, res) => {
         description: 'User successfully obtained.',
         schema: { $ref: "#/definitions/SignUpRequest" }
   } */
-    console.log(token);
     res.send(token);
   } catch (e) {
-    console.log(e);
     res.status(e.status).send(e.message);
   }
 });
@@ -72,12 +66,10 @@ router.post('/signupDevUser', async (req, res) => {
 // TODO: Disable this on production
 router.post('/loginWithEmail', async (req, res) => {
   const { email } = req.body;
-  console.log(email);
   try {
     const user = await userServices.loginWithGoogle(email);
     res.send(user);
   } catch (e) {
-    console.log(e);
     res.status(e.status).send(e.message);
   }
 });

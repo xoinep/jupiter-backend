@@ -14,9 +14,7 @@ router.post('/find-by-areaId', async (req, res) => {
               schema: { $ref: "#/definitions/findWalletsByIdRequest" }
       } */
   const { areaId } = req.body.payload;
-  console.log('find-by-areaId ' + areaId);
   let wallets = await WalletServices.getWalletByAreaIds([areaId]);
-  console.log('find-by-areaId' + JSON.stringify(wallets));
   res.send({ wallets });
   /* #swagger.responses[200] = {
           description: 'User successfully obtained.',
@@ -36,9 +34,7 @@ router.post('/find-by-poolId', async (req, res) => {
               schema: { $ref: "#/definitions/findWalletsByPoolIdRequest" }
       } */
   const { poolId } = req.body.payload;
-  console.log('find-by-poolId ' + poolId);
   let wallets = await WalletServices.getWalletByPoolIds([poolId]);
-  console.log('find-by-poolId' + JSON.stringify(wallets));
   res.send({ wallets });
   /* #swagger.responses[200] = {
           description: 'User successfully obtained.',

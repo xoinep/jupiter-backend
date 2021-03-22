@@ -2,8 +2,8 @@ const Pool = require('./pool.model');
 
 const PoolServices = {};
 
-PoolServices.createPool = async (name, areaId, target, unit, area) => {
-  return await Pool.create({ name, areaId, target, unit, area });
+PoolServices.createPool = async (name, areaId, target, unit, area, depth) => {
+  return await Pool.create({ name, areaId, target, unit, area, depth });
 };
 
 PoolServices.getPoolsByAreaIds = async (areaIds) => {

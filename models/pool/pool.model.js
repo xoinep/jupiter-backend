@@ -6,6 +6,7 @@ const poolSchema = new mongoose.Schema({
   target: String,
   unit: String,
   area: Number,
+  depth: Number,
 });
 
 module.exports = mongoose.model('Pool', poolSchema);

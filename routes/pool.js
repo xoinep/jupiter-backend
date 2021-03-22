@@ -18,7 +18,6 @@ router.post('/create', async (req, res) => {
   const { name, areaId, target, unit, area } = req.body.payload;
   let pool = await poolServices.createPool(name, areaId, target, unit, area);
   let wallet = await WalletServices.createWallet('SEED_UNIT', areaId, unit, pool._id, new Date());
-  console.log(wallet);
   res.send({ pool, wallet });
   /* #swagger.responses[200] = {
         description: 'User successfully obtained.',

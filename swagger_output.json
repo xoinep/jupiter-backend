@@ -47,6 +47,14 @@
         "responses": {}
       }
     },
+    "/area/disable": {
+      "post": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
     "/pool/create": {
       "post": {
         "tags": [
@@ -73,6 +81,14 @@
             }
           }
         }
+      }
+    },
+    "/pool/disable": {
+      "post": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
       }
     },
     "/user/get": {

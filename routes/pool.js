@@ -15,7 +15,7 @@ router.post('/create', async (req, res) => {
             schema: { $ref: "#/definitions/createPoolModel" }
     } */
 
-  const { name, areaId, target, unit, area, depth } = req.body.payload;
+  const { name, areaId, target, unit, area, depth } = req.body;
   let pool = await poolServices.createPool(name, areaId, target, unit, area, depth);
   let wallet = await WalletServices.createWallet('SEED_UNIT', areaId, unit, pool._id, new Date());
   res.send({ pool, wallet });
@@ -23,6 +23,12 @@ router.post('/create', async (req, res) => {
         description: 'User successfully obtained.',
         schema: { $ref: "#/definitions/createPoolResponse" }
   } */
+});
+
+router.post('/disable', async (req, res) => {
+  const { poolId } = req.body;
+  await poolServices.disablePoolById(poolId);
+  res.sendStatus(200);
 });
 
 module.exports = router;

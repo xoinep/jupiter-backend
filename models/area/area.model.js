@@ -1,11 +1,12 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const areaSchema = new mongoose.Schema({
   name: String,
   ownerIds: Array,
   location: String,
   phone: String,
-  target: String
+  target: String,
+  disable: { type: Boolean, default: false },
 });
 
-module.exports = mongoose.model("Area", areaSchema);
+module.exports = mongoose.model('Area', areaSchema);

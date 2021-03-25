@@ -15,7 +15,7 @@ router.post('/create', async (req, res) => {
             type: 'object',
             schema: { $ref: "#/definitions/createAreaModel" }
     } */
-  let { name, phone, location, target, ownerIds } = req.body.payload;
+  let { name, phone, location, target, ownerIds } = req.body;
   if (ownerIds === undefined) {
     ownerIds = [req.userId];
   } else {
@@ -43,4 +43,9 @@ router.post('/create', async (req, res) => {
   });
 });
 
+router.post('/disable', async (req, res) => {
+  let { areaId } = req.body;
+  await areaServices.disableAreaById(areaId);
+  res.sendStatus(200);
+});
 module.exports = router;

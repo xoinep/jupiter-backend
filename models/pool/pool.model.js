@@ -7,6 +7,7 @@ const poolSchema = new mongoose.Schema({
   unit: String,
   area: Number,
   depth: Number,
+  disable: { type: Boolean, default: false },
 });
 
 module.exports = mongoose.model('Pool', poolSchema);

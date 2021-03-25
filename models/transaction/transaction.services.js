@@ -16,7 +16,7 @@ TransactionServices.createTransaction = async (
   let res = await Transaction.create({
     walletId: walletId,
     creatorId: creatorId,
-    createdDate: createdDate,
+    createdAt: createdDate,
     quantity: quantity,
     name: name,
     customData: customData,

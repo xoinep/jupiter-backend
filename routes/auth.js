@@ -4,7 +4,7 @@ const encryptor = require('../utils/encrypt');
 const userServices = require('../models/user/user.services');
 const { verifyGoogleToken } = require('../services/google.services');
 
-router.post('/signup', async (req, res) => {
+router.post('/signup', async (req, res, next) => {
   /* 	#swagger.tags = ['Register']
       #swagger.description = 'Endpoint to sign up user' */
 
@@ -29,12 +29,13 @@ router.post('/signup', async (req, res) => {
         schema: { $ref: "#/definitions/SignUpRequest" } 
   } */
     res.send(token);
+    next();
   } catch (e) {
-    res.status(e.status).send(e.message);
+    next(e);
   }
 });
 
-router.post('/signupDevUser', async (req, res) => {
+router.post('/signupDevUser', async (req, res, next) => {
   /* 	#swagger.tags = ['Register']
       #swagger.description = 'Endpoint to sign up user' */
 
@@ -58,35 +59,35 @@ router.post('/signupDevUser', async (req, res) => {
         schema: { $ref: "#/definitions/SignUpRequest" }
   } */
     res.send(token);
+    next();
   } catch (e) {
-    res.status(e.status).send(e.message);
+    next(e);
   }
 });
 
 // TODO: Disable this on production
-router.post('/loginWithEmail', async (req, res) => {
+router.post('/loginWithEmail', async (req, res, next) => {
   const { email } = req.body;
   try {
     const user = await userServices.loginWithGoogle(email);
     res.send(user);
+    console.log(user);
+    next();
   } catch (e) {
-    res.status(e.status).send(e.message);
+    next(e);
   }
 });
 
-router.post('/token', async (req, res) => {
+router.post('/token', async (req, res, next) => {
   const { token } = req.body;
   let email = null;
   try {
     email = await verifyGoogleToken(token);
-  } catch (e) {
-    res.send(e);
-  }
-  try {
     const user = await userServices.loginWithGoogle(email);
     res.send(user);
+    next();
   } catch (e) {
-    res.status(e.status).send(e.message);
+    next(e);
   }
 });
 

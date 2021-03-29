@@ -1,3 +1,4 @@
+const { ErrorHandler, ErrorCodes } = require('../../utils/error');
 const Area = require('./area.model');
 
 const AreaServices = {};

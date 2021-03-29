@@ -6,6 +6,7 @@ const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
 const swagggerFile = require('./swagger_output.json');
 const checkTokenMiddleware = require('./utils/checkToken.middleware');
+const { handleError } = require('./utils/error');
 
 /* Routes */
 const router = require('./routes.js');
@@ -17,17 +18,9 @@ app.use('/doc', swaggerUi.serve, swaggerUi.setup(swagggerFile));
 app.use(checkTokenMiddleware);
 app.use(router);
 
-app.use(function (err, req, res, next) {
-  console.error(err);
-  res.status(err.status || 500);
-  if (err.json) {
-    res.send(JSON.parse(err.message));
-  } else {
-    res.header('Content-Type', 'text/plain');
-    res.send(`${err.message}`);
-  }
+app.use((err, req, res, next) => {
+  handleError(err, res);
 });
-
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

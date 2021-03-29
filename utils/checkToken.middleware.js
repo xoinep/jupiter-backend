@@ -15,8 +15,8 @@ module.exports = async (req, res, next) => {
     }
     req.userId = data.userId; // Set user to req
     next();
-  } catch (e) {
+  } catch (err) {
     // Should handle token expired - Force user to reloggin
-    console.log(e);
+    next(err);
   }
 };

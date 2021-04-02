@@ -35,11 +35,10 @@ TransactionServices.findTransactionsInRangeByCreatorId = async (getTransactionsI
   });
 };
 
-TransactionServices.findTransactionsInRangeByWalletId = async (startDate, endDate, walletId) => {
+TransactionServices.findTransactionsInRangeByWalletId = async (walletId) => {
   return await Transaction.find({
-    createdAt: { $gte: startDate, $lte: endDate },
     walletId: walletId,
-  });
+  }).sort({ createdAt: -1 });
 };
 
 TransactionServices.findTransactionsInRangeByWalletIds = async (startDate, endDate, walletIds) => {

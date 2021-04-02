@@ -14,7 +14,7 @@ router.post('/create', async (req, res, next) => {
             schema: { $ref: "#/definitions/createTransactionModel" }
     } */
   try {
-    const { walletId, quantity, customData, name, unit, cost, poolId, createdDate } = req.body.payload;
+    const { walletId, quantity, customData, name, unit, cost, poolId, createdDate } = req.body;
     const userId = req.userId;
     let transaction = await transactionService.createTransaction(
       walletId,
@@ -74,8 +74,8 @@ router.post('/get-by-id', async (req, res, next) => {
             schema: { $ref: "#/definitions/getTransactionsInRangesByWalletIdModel" }
     } */
   try {
-    const { startDate, endDate, walletId } = req.body;
-    let transactions = await transactionService.findTransactionsInRangeByWalletId(startDate, endDate, walletId);
+    const { walletId } = req.body;
+    let transactions = await transactionService.findTransactionsInRangeByWalletId(walletId);
     res.send(transactions);
     next();
   } catch (error) {

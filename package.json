@@ -19,6 +19,7 @@
     "moment": "^2.29.1",
     "mongoose": "^5.11.8",
     "node-dev": "^6.2.0",
+    "sumo-logger": "^2.6.1",
     "swagger-autogen": "^2.1.1",
     "swagger-ui-express": "^4.1.6"
   }
